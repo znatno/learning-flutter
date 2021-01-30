@@ -12,15 +12,27 @@ class NinjaCard extends StatefulWidget {
 }
 
 class _NinjaCardState extends State<NinjaCard> {
+
+  int heroLevel = 0;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.grey[900],
       appBar: AppBar(
-        title: Text('Ninja ID Card'),
+        title: Text('Hero ID Card'),
         centerTitle: true,
         backgroundColor: Colors.grey[850],
         elevation: 0,
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          setState(() {
+            heroLevel += 1;
+          });
+        },
+        child: Icon(Icons.add),
+        backgroundColor: Colors.grey[800],
       ),
       body: Padding(
         padding: EdgeInsets.fromLTRB(30, 40, 30, 0),
@@ -66,7 +78,7 @@ class _NinjaCardState extends State<NinjaCard> {
             ),
             SizedBox(height: 8),
             Text(
-              '8',
+              '$heroLevel',
               style: TextStyle(
                 color: Colors.amberAccent,
                 fontSize: 21,
