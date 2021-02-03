@@ -17,9 +17,11 @@ class _HomeState extends State<Home> {
 
     // set bg image
     String bgImage = data['isDaytime'] ? 'day.JPG' : 'night.JPG';
+    Color bgColor = data['isDaytime'] ? Colors.indigoAccent : Colors.indigo[800];
     Color textColor = data['isDaytime'] ? Colors.grey[900] : Colors.white;
 
     return Scaffold(
+      backgroundColor: bgColor,
       body: SafeArea(
           child: Container(
             decoration: BoxDecoration(

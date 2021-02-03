@@ -21,8 +21,7 @@ class WorldTime {
 
       // get properties from data
       String datetime = data['datetime'];
-      int offset = data['gmt_offset'];
-      // print(datetime);
+      // int offset = data['gmt_offset'];
 
       // DateTime obj
       DateTime now = DateTime.parse(datetime);
