@@ -15,40 +15,51 @@ class _HomeState extends State<Home> {
     data = ModalRoute.of(context).settings.arguments;
     print(data);
 
+    // set bg image
+    String bgImage = data['isDaytime'] ? 'day.JPG' : 'night.JPG';
+
     return Scaffold(
       body: SafeArea(
-          child: Padding(
-            padding: const EdgeInsets.fromLTRB(8, 48, 8, 0),
-            child: Column(
-              children: [
-                FlatButton.icon(
-                    onPressed: () {
-                      Navigator.pushNamed(context, '/location');
-                    },
-                    icon: Icon(Icons.edit_location_outlined),
-                    label: Text('Edit Location')
-                ),
-                SizedBox(height: 32,),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Text(
-                      data['location'],
-                      style: TextStyle(
-                        fontSize: 28,
-                        letterSpacing: 1.0,
-                      ),
-                    ),
-                  ],
-                ),
-                SizedBox(height: 20,),
-                Text(
-                  data['time'],
-                  style: TextStyle(
-                    fontSize: 48
+          child: Container(
+            decoration: BoxDecoration(
+              image: DecorationImage(
+                  image: AssetImage('assets/$bgImage'),
+                  fit: BoxFit.fill
+              ),
+            ),
+            child: Padding(
+              padding: const EdgeInsets.fromLTRB(8, 48, 8, 0),
+              child: Column(
+                children: [
+                  FlatButton.icon(
+                      onPressed: () {
+                        Navigator.pushNamed(context, '/location');
+                      },
+                      icon: Icon(Icons.edit_location_outlined),
+                      label: Text('Edit Location')
                   ),
-                )
-              ],
+                  SizedBox(height: 32,),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text(
+                        data['location'],
+                        style: TextStyle(
+                          fontSize: 28,
+                          letterSpacing: 1.0,
+                        ),
+                      ),
+                    ],
+                  ),
+                  SizedBox(height: 20,),
+                  Text(
+                    data['time'],
+                    style: TextStyle(
+                      fontSize: 48
+                    ),
+                  )
+                ],
+              ),
             ),
           )
       ),
