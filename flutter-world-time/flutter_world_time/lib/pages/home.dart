@@ -17,6 +17,7 @@ class _HomeState extends State<Home> {
 
     // set bg image
     String bgImage = data['isDaytime'] ? 'day.JPG' : 'night.JPG';
+    Color textColor = data['isDaytime'] ? Colors.grey[900] : Colors.white;
 
     return Scaffold(
       body: SafeArea(
@@ -24,29 +25,30 @@ class _HomeState extends State<Home> {
             decoration: BoxDecoration(
               image: DecorationImage(
                   image: AssetImage('assets/$bgImage'),
-                  fit: BoxFit.fill
+                  fit: BoxFit.cover
               ),
             ),
             child: Padding(
-              padding: const EdgeInsets.fromLTRB(8, 48, 8, 0),
+              padding: const EdgeInsets.fromLTRB(8, 40, 8, 0),
               child: Column(
                 children: [
                   FlatButton.icon(
-                      onPressed: () {
-                        Navigator.pushNamed(context, '/location');
-                      },
-                      icon: Icon(Icons.edit_location_outlined),
-                      label: Text('Edit Location')
+                    onPressed: () {
+                      Navigator.pushNamed(context, '/location');
+                    },
+                    icon: Icon(Icons.edit_location_outlined, color: textColor),
+                    label: Text('Edit Location', style: TextStyle(color: textColor),),
                   ),
-                  SizedBox(height: 32,),
+                  SizedBox(height: 80),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Text(
                         data['location'],
                         style: TextStyle(
-                          fontSize: 28,
-                          letterSpacing: 1.0,
+                            fontSize: 28,
+                            letterSpacing: 1.0,
+                            color: textColor
                         ),
                       ),
                     ],
@@ -55,7 +57,8 @@ class _HomeState extends State<Home> {
                   Text(
                     data['time'],
                     style: TextStyle(
-                      fontSize: 48
+                        fontSize: 48,
+                        color: textColor
                     ),
                   )
                 ],
